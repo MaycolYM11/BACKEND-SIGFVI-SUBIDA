@@ -37,7 +37,10 @@ const PORT = process.env.PORT || 3001;
 
 // - Cors Options
 const optionsCors = {
-  origin: `http://localhost:3000 ` || `exp://192.168.0.6:8081` || 'https://frontend-sigfvi-subida.vercel.app/',
+  origin:
+    `http://localhost:3000 ` ||
+    `exp://192.168.0.6:8081` ||
+    'https://frontend-sigfvi-subida.vercel.app',
   methods: 'GET, POST, PUT, DELETE',
   optionsSuccessStatus: 200,
 };
