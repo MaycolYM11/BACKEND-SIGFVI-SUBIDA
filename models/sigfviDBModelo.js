@@ -8,15 +8,16 @@
 const fs = require('fs');
 const path = require('path');
 
+
 const caCertPath = path.join(
   __dirname,
-  '../certs/DigitalCertGlobalRootCA.crt.pem'
+  '../certs/DigiCertGlobalRootCA.crt.pem'
 );
 
 let caCert;
 try {
   caCert = fs.readFileSync(caCertPath);
-} catch {
+} catch(error) {
   console.error(`Error al leer el certificado: ${error.message}`);
   process.exit(1);
 }
@@ -36,7 +37,7 @@ const db = mysql.createConnection({
   user: DB_USER,
   password: DB_PASSWORD,
   database: DB_DATABASE,
-  port:DB_PORT,
+  port: DB_PORT,
   ssl: {
     ca: caCert,
   },
