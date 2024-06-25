@@ -5,6 +5,22 @@
  * podriamos mysql.createPool en lugar de mysql.createConnection, para evitar la saturacion y sobrecalentamiento de la base de datos
  */
 
+const fs = require('fs');
+const path = require('path');
+
+const caCertPath = path.join(
+  __dirname,
+  '../certs/DigitalCertGlobalRootCA.crt.pem'
+);
+
+let caCert;
+try {
+  caCert = fs.readFileSync(caCertPath);
+} catch {
+  console.error(`Error al leer el certificado: ${error.message}`);
+  process.exit(1);
+}
+
 const mysql = require('mysql2'); // importar el modulo de mysql
 const nomDatabase = 'SIGFVI_V3'; // nombre de la base de datos.
 
@@ -19,6 +35,9 @@ const db = mysql.createConnection({
   user: DB_USER,
   password: DB_PASSWORD,
   database: DB_DATABASE,
+  ssl: {
+    ca: caCert,
+  },
 });
 
 db.connect((err) => {
