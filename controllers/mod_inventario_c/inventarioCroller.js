@@ -28,7 +28,7 @@ const consultaDatos = async (req, res) => {
     const productosConImagen = result.map((producto) => {
       return {
         ...producto,
-        Foto_Url: `http://backend-sigfvi-subida-iota.vercel.app/img/${producto.Foto_Producto`,
+        Foto_Url: `http://backend-sigfvi-subida-iota.vercel.app/img/${producto.Foto_Producto}`,
       };
     });
 
@@ -69,7 +69,7 @@ const BuscarInventario = async (req, res) => {
     const productosConImagen = result.map(producto => {
       return {
         ...producto,
-        Foto_Url: `http://backend-sigfvi-subida-iota.vercel.app/img/${producto.Foto_Producto}`
+        Foto_Url:`http://backend-sigfvi-subida-iota.vercel.app/img/${producto.Foto_Producto}`
       };
     });
 
